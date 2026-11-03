@@ -6,12 +6,14 @@
 /*   By: dzorina <dzorina@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 13:12:38 by dzorina           #+#    #+#             */
-/*   Updated: 2026/11/02 18:12:33 by dzorina          ###   ########.fr       */
+/*   Updated: 2026/11/03 12:08:50 by dzorina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+
+int     ft_base_check(char *base);
 
 int	ft_strlen(char *str)
 {
@@ -78,6 +80,12 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int		input_number_10;
 	long	number;
 	int		base_to_len;
+
+	if (!ft_base_check(base_from))
+		return (NULL);
+
+	if (!ft_base_check(base_to))
+		return (NULL);
 
 	input_number_10 = ft_atoi(nbr, base_from);
 	res_len = ft_res_length(input_number_10, base_to);
