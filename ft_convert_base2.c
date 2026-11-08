@@ -22,7 +22,7 @@ int	ft_base_check(char *base)
 		return (0);
 	else
 	{
-		while(base[i] == '\0')
+		while(base[i] != '\0')
 		{
 			if (base[i] == ' ' || base[i] == '+' || base[i] == '-')
 				return (1);
