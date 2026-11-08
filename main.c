@@ -1,18 +1,31 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
+#include "dict.h"
 
-char *ft_convert_base(char *nbr, char *base_from, char *base_to);
+char *ft_read_file(const char *) ;
 
 int main(void){
 
 	char *res;
-//	res = ft_convert_base("01010101", "01", "0123456789");
+	t_entry	*dict;
+	size_t	count;
 
-	res = ft_convert_base("85", "0123456789", "01");
-//	res = ft_convert_base("01010101", "01", "0123456789");
+	res = ft_read_file("numbers.dict");
+	printf("%s", res);
 
-	printf(res);
+	dict = ft_parse_dict(res, &count);
+	if (dict == NULL || count == 0)
+	{
+		free(dict);
+		free(res);
+		write(1, "Dict Error\n", 11);
+		return (1);
+	}
 
+//dic must be ready
+
+	free(dict);
 	free(res);	
 	return(0);
 }
